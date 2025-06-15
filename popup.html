@@ -9,8 +9,10 @@
       font-family: sans-serif;
       padding: 10px;
     }
-    h1, h2 {
+    h1 {
       text-align: center;
+      font-size: 18px;
+      margin-top: 0;
     }
     textarea {
       width: 100%;
@@ -23,21 +25,47 @@
       padding: 10px;
       margin-top: 5px;
     }
-    .container {
-      border: 1px solid #ccc;
-      padding: 15px;
-      margin-top: 15px;
-      border-radius: 5px;
+    .tab-container {
+      display: flex;
+      border-bottom: 1px solid #ccc;
     }
-    #sourceText { height: 100px; }
-    #resultArea { height: 150px; }
-    #urlList { height: 150px; }
+    .tab {
+      padding: 10px 15px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-bottom: none;
+      margin-right: 5px;
+      border-radius: 5px 5px 0 0;
+      background-color: #f1f1f1;
+    }
+    .tab.active {
+      background-color: #fff;
+      border-bottom: 1px solid #fff;
+    }
+    .tab-content {
+      display: none;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-top: none;
+      border-radius: 0 0 5px 5px;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    #sourceText { height: 80px; }
+    #resultArea { height: 80px; }
+    #urlList { height: 80px; }
   </style>
 </head>
 <body>
   <h1>会社リストアップ＆URLオープナー</h1>
 
-  <div id="extractor-container" class="container">
+  <div class="tab-container">
+    <div class="tab active" data-tab="extractor">リスト抽出</div>
+    <div class="tab" data-tab="opener">URLオープナー</div>
+  </div>
+
+  <div id="extractor" class="tab-content active">
     <h2>会社リスト抽出機能</h2>
     <h3>1. 抽出対象のテキストを貼り付け</h3>
     <textarea id="sourceText" placeholder="ここにWebページからコピーしたテキストを貼り付けてください..."></textarea>
@@ -47,7 +75,7 @@
     <button id="copyButton">4. 結果をコピーする</button>
   </div>
 
-  <div id="opener-container" class="container">
+  <div id="opener" class="tab-content">
     <h2>URL一括オープナー機能</h2>
     <textarea id="urlList" placeholder="ここにURLを1行ずつ入力してください..."></textarea>
     <button id="openUrlsButton">URLを一括で開く</button>
