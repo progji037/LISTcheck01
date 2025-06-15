@@ -1,6 +1,10 @@
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'processText') {
     processTextWithNewLogic(request.data);
+  } else if (request.action === 'openUrls') {
+    request.urls.forEach(url => {
+      chrome.tabs.create({ url: url });
+    });
   }
   return true;
 });
