@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const copyButton = document.getElementById('copyButton');
   const sourceText = document.getElementById('sourceText');
   const resultArea = document.getElementById('resultArea');
+  const openUrlsButton = document.getElementById('openUrlsButton');
+  const urlList = document.getElementById('urlList');
 
   // 抽出ボタンがクリックされたら、入力テキストをバックグラウンドに送信
   extractButton.addEventListener('click', () => {
@@ -21,6 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (resultArea.value) {
       resultArea.select();
       document.execCommand('copy');
+    }
+  });
+
+  // URLを開くボタンがクリックされたら、URLリストをバックグラウンドに送信
+  openUrlsButton.addEventListener('click', () => {
+    const urls = urlList.value.split('\n').filter(url => url.trim() !== '');
+    if (urls.length > 0) {
+      chrome.runtime.sendMessage({ action: 'openUrls', urls: urls });
     }
   });
 

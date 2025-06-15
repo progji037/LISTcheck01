@@ -1,12 +1,13 @@
 {
   "manifest_version": 3,
-  "name": "会社リストアップ",
-  "version": "1.0",
-  "description": "閲覧中のページから会社名とURLをリストアップします。",
+  "name": "会社リストアップ＆URLオープナー",
+  "version": "2.0",
+  "description": "閲覧中のページから会社情報を抽出し、複数のURLを一括で開くことができます。",
   "permissions": [
     "activeTab",
     "scripting",
-    "storage"
+    "storage",
+    "tabs"
   ],
   "host_permissions": [
     "<all_urls>"
