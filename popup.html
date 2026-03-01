@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>会社リストアップ＆URLオープナー</title>
+  <style>
+    body {
+      width: 400px;
+      font-family: sans-serif;
+      padding: 10px;
+    }
+    h1 {
+      text-align: center;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 0;
+    }
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+    }
+    .container {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-top: 15px;
+      border-radius: 5px;
+    }
+    #sourceText { height: 50px; }
+    #resultArea { height: 50px; }
+    #urlList { height: 50px; }
+
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid #ccc;
+    }
+    .tab-button {
+      padding: 10px 15px;
+      cursor: pointer;
+      border: none;
+      background-color: #f1f1f1;
+      border-bottom: 1px solid #ccc;
+      width: 50%;
+    }
+    .tab-button.active {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-bottom: 1px solid #fff;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+    .tab-content {
+      display: none;
+      padding-top: 15px;
+    }
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>会社リストアップ＆URLオープナー</h1>
+
+  <div class="tabs">
+    <button class="tab-button active" data-tab="extractor">会社リスト抽出</button>
+    <button class="tab-button" data-tab="opener">URLオープナー</button>
+  </div>
+
+  <div id="extractor" class="tab-content active">
+    <div id="extractor-container" class="container">
+      <h2>会社リスト抽出機能</h2>
+      <h3>1. 抽出対象のテキストを貼り付け</h3>
+      <textarea id="sourceText" placeholder="ここにWebページからコピーしたテキストを貼り付けてください..."></textarea>
+      <button id="extractButton">2. 抽出と検索開始</button>
+      <h3>3. 抽出結果</h3>
+      <textarea id="resultArea" readonly placeholder="ここに結果が出力されます..."></textarea>
+      <button id="copyButton">4. 結果をコピーする</button>
+    </div>
+  </div>
+
+  <div id="opener" class="tab-content">
+    <div id="opener-container" class="container">
+      <h2>URL一括オープナー機能</h2>
+      <textarea id="urlList" placeholder="ここにURLを1行ずつ入力してください..."></textarea>
+      <button id="openUrlsButton">URLを一括で開く</button>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
